@@ -44,7 +44,9 @@ public abstract class DeckService {
      */
 
     public static void sort(Deck deck) {
-        Collections.sort(deck.getCards());
+        if ((deck != null) && (deck.getNumberOfCards() > 0)) {
+            Collections.sort(deck.getCards());
+        }
     }
 
     /**
@@ -52,7 +54,9 @@ public abstract class DeckService {
      */
 
     public static void mix(Deck deck) {
-        Collections.shuffle(deck.getCards());
+        if ((deck != null) && (deck.getNumberOfCards() > 0)) {
+            Collections.shuffle(deck.getCards());
+        }
     }
 
     /**
@@ -75,6 +79,7 @@ public abstract class DeckService {
      */
 
     public static String show(Deck deck) {
+        if ((deck == null) || (deck.getNumberOfCards() == 0)) return "The deck is empty";
         String viewString = new String();
         for (Card card : deck.getCards()) {
             viewString = viewString + "\n" + card.getBothNames();
